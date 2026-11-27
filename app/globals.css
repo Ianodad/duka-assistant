@@ -1,0 +1,190 @@
+@import 'tailwindcss';
+
+/*
+ * Duka design tokens. "Painted duka": flat kiosk-board colours, one bold
+ * signboard hero, quiet white cards everywhere else. All tokens are used by
+ * the shop page and by later assistant cards (week 2), so they match.
+ */
+@theme {
+  --color-ink: #1f2a22;
+  --color-muted: #55615a;
+  --color-page: #f1f4ef;
+  --color-surface: #ffffff;
+  --color-sunken: #f6f8f4;
+  --color-line: #d9e0d6;
+  --color-line-strong: #b9c4b5;
+  /* Input and outline-button borders: 3:1 against white and sunken (WCAG 1.4.11). */
+  --color-field: #7a867e;
+  --color-board: #0e5a34;
+  --color-board-strong: #0a4728;
+  --color-board-soft: #e3efe6;
+  --color-sun: #f5c542;
+  --color-sun-soft: #fdf3d3;
+  --color-mpesa: #0b7a35;
+  --color-mpesa-strong: #08602a;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+  --color-warn: #7a4b00;
+  --color-warn-soft: #fff4dc;
+  --color-info: #1e4e8c;
+  --color-info-soft: #e8f0fa;
+  --color-ring: #1e4e8c;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-tile: 14px;
+  --radius-card: 18px;
+  --radius-board: 26px;
+
+  --shadow-card: 0 1px 0 rgb(31 42 34 / 0.04), 0 8px 24px -12px rgb(31 42 34 / 0.18);
+  --shadow-drawer: -24px 0 48px -24px rgb(31 42 34 / 0.35);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus everywhere; yellow on the dark signboard. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+.on-board :where(a, button, input, [tabindex]):focus-visible {
+  outline-color: var(--color-sun);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Press feedback for every pressable thing (Emil: 0.97 on :active). */
+.pressable {
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.pressable:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lift:hover {
+    box-shadow: var(--shadow-card);
+    border-color: var(--color-line-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  .pressable {
+    transition-property: background-color, color, border-color !important;
+    transform: none !important;
+  }
+}
+
+@keyframes duka-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: duka-pulse 1.2s infinite ease-in-out;
+}
+
+/* Week 2 assistant drawer: bottom sheet under 1024px, docked side drawer from 1024px. */
+:root {
+  --drawer-w: 420px;
+}
+.assistant-drawer {
+  transform: translateY(102%);
+  visibility: hidden;
+  transition:
+    transform 300ms var(--ease-drawer),
+    visibility 0s linear 300ms;
+}
+.assistant-drawer[data-open='true'] {
+  transform: none;
+  visibility: visible;
+  transition:
+    transform 300ms var(--ease-drawer),
+    visibility 0s;
+}
+@media (min-width: 1024px) {
+  .assistant-drawer {
+    transform: translateX(102%);
+  }
+  .assistant-dock {
+    transition: margin-right 300ms var(--ease-drawer);
+  }
+  body[data-assistant-open='true'] .assistant-dock {
+    margin-right: var(--drawer-w);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .assistant-drawer,
+  .assistant-drawer[data-open='true'],
+  .assistant-dock {
+    transition: none;
+  }
+}
+
+/* Main-area assistant canvas (AC-L23): a new render fades/slides in (200 ms); a true follow-up gets a subtle highlight. */
+@keyframes canvas-swap-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes canvas-pulse {
+  from {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-sun, #f5b400) 70%, transparent);
+  }
+  to {
+    box-shadow: 0 0 0 3px transparent;
+  }
+}
+.canvas-swap {
+  animation: canvas-swap-in 200ms ease-out both;
+}
+.canvas-pulse {
+  animation: canvas-pulse 900ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .canvas-swap,
+  .canvas-pulse {
+    animation: none;
+  }
+}

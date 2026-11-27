@@ -1,0 +1,41 @@
+{
+  "id": "msg_01Fixturebudget1002",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_02RenderBudget100",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "price_filtered"
+        },
+        "components": [
+          {
+            "component": "ProductGrid",
+            "heading": {
+              "key": "category"
+            },
+            "productIds": [
+              "sukuma-bunch",
+              "royco-200g",
+              "brookside-milk-500ml",
+              "tropical-heat-crisps"
+            ]
+          },
+          {
+            "component": "FilterChips"
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 60
+  }
+}

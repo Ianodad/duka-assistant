@@ -1,0 +1,30 @@
+{
+  "id": "msg_01Fixtureshowflour1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01ListFlour",
+      "name": "list_products",
+      "input": {
+        "category": "Flour"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01ListBaking",
+      "name": "list_products",
+      "input": {
+        "category": "Baking"
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 60
+  }
+}

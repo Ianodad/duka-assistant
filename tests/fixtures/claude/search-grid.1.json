@@ -1,0 +1,26 @@
+{
+  "id": "msg_01Fixturesearchgrid1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "text",
+      "text": "I will look up tea."
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01SearchTea",
+      "name": "search_products",
+      "input": {
+        "query": "tea"
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}

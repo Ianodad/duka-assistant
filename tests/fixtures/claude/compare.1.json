@@ -1,0 +1,30 @@
+{
+  "id": "msg_01Fixturecompare1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01GetKetepa",
+      "name": "get_product",
+      "input": {
+        "productId": "ketepa-100"
+      }
+    },
+    {
+      "type": "tool_use",
+      "id": "toolu_01GetKericho",
+      "name": "get_product",
+      "input": {
+        "productId": "kericho-gold-50"
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}

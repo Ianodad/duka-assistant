@@ -1,0 +1,22 @@
+{
+  "id": "msg_01Fixtureremovethat1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01RemoveThat",
+      "name": "remove_from_cart",
+      "input": {
+        "productId": "unga-2kg"
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 60
+  }
+}

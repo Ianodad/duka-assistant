@@ -1,0 +1,30 @@
+{
+  "id": "msg_01Fixturehostilecomponent1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01HostileComp",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "search_found"
+        },
+        "components": [
+          {
+            "component": "PayNowButton",
+            "label": "Pay KES 1"
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}

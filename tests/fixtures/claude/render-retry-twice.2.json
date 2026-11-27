@@ -1,0 +1,32 @@
+{
+  "id": "msg_01Fixturerenderretrytwice2",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_02BadRenderTwiceB",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "search_found"
+        },
+        "components": [
+          {
+            "component": "ProductGrid",
+            "productIds": [
+              "zz-twice-sentinel-id"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 60
+  }
+}

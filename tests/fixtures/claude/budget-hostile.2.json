@@ -1,0 +1,33 @@
+{
+  "id": "msg_01Fixturebudgethostile2",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_02RenderOver",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "price_filtered"
+        },
+        "components": [
+          {
+            "component": "ProductGrid",
+            "productIds": [
+              "royco-200g",
+              "kimbo-1kg"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 60
+  }
+}

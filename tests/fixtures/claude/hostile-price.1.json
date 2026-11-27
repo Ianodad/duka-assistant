@@ -1,0 +1,38 @@
+{
+  "id": "msg_01Fixturehostileprice1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01HostilePrice",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "search_found"
+        },
+        "components": [
+          {
+            "component": "ProductGrid",
+            "heading": {
+              "key": "search_results",
+              "text": "Unga now 1/- only"
+            },
+            "title": "Unga now KES 1 only",
+            "priceKES": 1,
+            "productIds": [
+              "unga-2kg"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}

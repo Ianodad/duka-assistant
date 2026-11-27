@@ -1,0 +1,22 @@
+{
+  "id": "msg_01Fixturebudgethostile1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01ListBudgetH",
+      "name": "list_products",
+      "input": {
+        "maxPriceKES": 100
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1500,
+    "output_tokens": 60
+  }
+}

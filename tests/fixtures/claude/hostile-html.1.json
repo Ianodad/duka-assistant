@@ -1,0 +1,30 @@
+{
+  "id": "msg_01Fixturehostilehtml1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01HostileHtml",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "order_shown"
+        },
+        "components": [
+          {
+            "component": "OrderStatusCard",
+            "orderId": "<img src=x onerror=alert(1)>"
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}

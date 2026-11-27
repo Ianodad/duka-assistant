@@ -1,0 +1,38 @@
+{
+  "id": "msg_01Fixturehostilepay1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01HostilePay",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "checkout_ready"
+        },
+        "components": [
+          {
+            "component": "CheckoutHandoff",
+            "onContinue": {
+              "event": {
+                "name": "pay",
+                "context": {
+                  "amountKES": 1,
+                  "phone": "254700000000"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}

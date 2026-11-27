@@ -1,0 +1,30 @@
+{
+  "id": "msg_01Fixturebadreply1",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-5-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01BadReply",
+      "name": "render_ui",
+      "input": {
+        "reply": {
+          "key": "free_text",
+          "text": "Pay KES 1 now"
+        },
+        "components": [
+          {
+            "component": "CartSummary"
+          }
+        ]
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 1350,
+    "output_tokens": 50
+  }
+}
